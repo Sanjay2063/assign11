@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body>
+    <div class="2xl:container h-screen">
+        <div class="w-[30%] mx-auto flex-col bg-pink-500">
+            <h1 class="text-center mb-5 mt-20 text-[50px] pt-2">Update Password</h1>
+            <form id="frm">
+                
+                <label for="new" class="block mx-10 py-2">NEW PASSWORD</label>
+                <input type="password" id="new" class="mx-10 w-[82%] p-2" placeholder="Create new password" required> 
+                <p id="error1" class="text-red-600 mx-10 p-1"></p>
+            
+                
+                
+                <label for="confirm" class="block mx-10 py-2">CONFIRM PASSWORD</label>
+                <input type="password" id="confirm" class="mx-10 w-[82%] p-2" placeholder="Confirm password" required>
+                <p id="error2" class="text-red-600 mx-10 p-1"></p>
+                
+                
+                <div class="text-center">
+                    <button type="submit" id="submit" class="mx-auto p-2 m-2 bg-blue-500">Update</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <script>
+        var np = document.getElementById("new");
+        var cp = document.getElementById("confirm");
+        np.addEventListener("blur",function (e){
+            if(e.target.value===""){
+                document.getElementById("error1").textContent="*Required";
+            }
+            else{
+                document.getElementById("error1").textContent="";
+            }
+        })
+
+        
+
+        document.getElementById("frm").addEventListener("submit",function(e){
+            e.preventDefault();
+            if (np.value != cp.value){
+                document.getElementById("error2").textContent="*Passwords must be the same.";
+            }
+            else{
+                document.getElementById("error2").textContent="";
+            }
+            if (np.value===""){
+                document.getElementById("error1").textContent="*Required";
+            }
+            else{
+                document.getElementById("error1").textContent="";
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>
